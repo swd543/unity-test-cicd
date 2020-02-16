@@ -1,0 +1,20 @@
+name: CI
+
+on: [push]
+
+jobs:
+  activation:
+    name: buga
+    runs-on: ubuntu-latest
+    steps:
+      - id: getManualLicenseFile
+        name: Get git license
+        uses: webbertakken/unity-request-manual-activation-file@v1.1
+        with: 
+          unityVersion: 2019.3.1f1
+      - name: Expose as artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: .
+          path: .  
+
